@@ -30,22 +30,48 @@ const showReview = (person) => {
   quote.textContent = item.quote;
 };
 
-// functionality for next button
-
-nextBtn.addEventListener("click", () => {
+// function to show next review
+const showNext = () => {
   currentItem++;
   if (currentItem > reviews.length - 1) {
     currentItem = 0;
   }
   showReview(currentItem);
-});
+};
 
-// functionality for previous button
-backBtn.addEventListener("click", () => {
+// function to show previous review
+const showPrevious = () => {
   currentItem--;
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
   }
-
   showReview(currentItem);
-});
+};
+
+// show review if you click on arrow buttons on keyboard
+const keyboardNav = (e) => {
+  switch (e.key) {
+    case "ArrowLeft":
+    case "ArrowDown":
+      showPrevious();
+      break;
+    case "ArrowRight":
+    case "ArrowUp":
+      showNext();
+      break;
+    default:
+      return;
+  }
+};
+
+// functionality for next button
+nextBtn.addEventListener("click", showNext);
+
+// functionality for previous button
+backBtn.addEventListener("click", showPrevious);
+
+// listen if arrow buttons on keyboard are clicked
+document.addEventListener("keyup", keyboardNav);
+
+// functionality for using mouse wheel to go through reviews
+document.addEventListener("wheel", showNext);
