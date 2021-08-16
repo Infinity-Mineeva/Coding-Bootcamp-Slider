@@ -159,17 +159,18 @@ html {
     ATTRIBUTION STYLES
 =========================*/
 
-.attribution,
-.attribution a {
-  font-size: 11px;
-}
-
-.attribution {
+footer {
   position: absolute;
   width: 100%;
   text-align: center;
   bottom: 0.5em;
 }
+
+.attribution,
+.attribution a {
+  font-size: 11px;
+}
+
 .attribution a {
   color: hsl(228, 45%, 44%);
 }
@@ -246,7 +247,7 @@ html {
     top: 5.7em;
   }
 
-  .attribution {
+  footer {
     bottom: 0;
   }
 }
